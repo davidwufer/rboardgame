@@ -15,5 +15,5 @@ Gem::Specification.new do |s|
  s.files       = Dir.glob("lib/**/*.rb")
  s.test_files  = Dir.glob("spec/**/*.rb")
 
- s.add_development_dependency 'rspec', '~> 2.5'
+ s.add_development_dependency('rspec')
 end
