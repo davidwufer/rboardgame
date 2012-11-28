@@ -1,2 +1,1 @@
-module RBoardGame
-end
+require 'rboardgame/board'

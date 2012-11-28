@@ -4,7 +4,6 @@ require 'rboardgame/version'
 Gem::Specification.new do |s|
  s.name        = "rboardgame"
  s.version     = RBoardGame::VERSION
- # s.version     = "0.0.0"
  s.authors     = ["David Wu"]
  s.email       = ["davidcnwu@gmail.com"]
 
