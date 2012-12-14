@@ -1,5 +1,6 @@
 module RBoardGame
-	class BasicBoard
+  # This is the stuff that a board needs
+  class BasicBoard
     def possible_moves
     end
 
@@ -8,5 +9,5 @@ module RBoardGame
 
     def do_move(move)
     end
-	end
+  end
 end
