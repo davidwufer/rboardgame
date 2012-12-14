@@ -8,19 +8,28 @@ module RBoardGame
     def play_game
       setup_players
       winner = play_until_game_over
-      display winner
+      display(winner)
     end
 
     def play_until_game_over
       until @game.game_over?
-        move = get_move_for_current_player
-        @game = @game.do_move(move)
+        play_move_for_current_player
       end
+
       return @game.winner
     end
 
+    def play_move_for_current_player
+      move = get_move_for_current_player
+      @game = @game.do_move(move)
+    end
+
+    def get_move_for_current_player
+      piece_player_map.current_player(@game).move(@game)
+    end
+
     def setup_players
-      piece_player_map or PiecePlayerMap.new(@game.playable_pieces)
+      piece_player_map ||= PiecePlayerMap.new(@game)
     end
 
     private
@@ -30,8 +39,32 @@ module RBoardGame
 
   class PiecePlayerMap
 
-    def initialize(playable_pieces)
-      # TODO: map piece -> player
+    def initialize(game)
+      game.playable_pieces.each do |piece|
+        map[piece] = choose_player(piece)
+      end
     end
+
+    def choose_player(piece)
+      HumanPlayer.new
+    end
+
+    def current_player(game)
+      map[game.current_piece]
+    end
+
+    private 
+      def map
+        @map ||= {}
+      end
+  end
+
+  class HumanPlayer
+  end
+
+  class AlphaBetaPlayer
+  end
+
+  class RandomPlayer
   end
 end
