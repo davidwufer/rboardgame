@@ -1,6 +1,7 @@
 module RBoardGame
   # The backend engine for running a game until completion or termination 
   class GameEngine
+    
     def initialize(game)
       @game = game
     end
@@ -13,13 +14,13 @@ module RBoardGame
 
     def play_until_game_over
       until @game.game_over?
-        play_move_for_current_player
+        do_move_for_current_player
       end
 
       return @game.winner
     end
 
-    def play_move_for_current_player
+    def do_move_for_current_player
       move = get_move_for_current_player
       @game = @game.do_move(move)
     end
